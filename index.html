@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GoT Hangman Game</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Metamorphous|Rye" rel="stylesheet"> 
+	<script type="text/javascript" src="assets/javascript/game.js"></script>
+	<meta charset="utf-8">
+</head>
+<body>
+
+	<header>
+
+		<h1>Game of Thrones - Hangman Game</h1>
+	
+		<div class="hangImg">
+				
+			<img src="assets/images/hang.png" alt="Hangman" id="hangImg">
+
+		</div>
+
+	</header>
+
+	<div class="layout">
+
+		<div class="leftContainer">
+
+			<div class="charImg">
+				
+				<h2>Image of the Character</h2>
+
+				<img src="assets/images/phimage.png" alt="Character Image" id="charImg">
+
+			</div>
+
+		</div>
+
+		<div class="rightContainer">
+
+			<div class="instructions">
+
+				<p>Press any key to get started!</p>
+				
+				<p>How to play:</p>
+				
+				<p>Guess the name of Game of Thrones characters</p>
+
+			</div>
+			
+			<div class="currentWord">
+
+				<h2>Current Word</h2>
+			
+				<span id="currentWord">???</span>				
+			
+			</div>
+			
+			<div class="remainingGuesses">
+
+				<h2>Remaining Guesses</h2>
+				
+				<span id="remainingGuesses">???</span>
+
+			</div>
+
+			<div class="guessedLetters">
+
+				<h2>Guessed Letters</h2>
+				
+				<span id="guessedLetters">???</span>
+
+			</div>
+
+			<div class="score">
+
+				<div class="wins">
+					
+					<h2>Wins: </h2>
+
+					<span id="wins">???</span>
+					
+				</div>
+
+				<div class="loses">
+
+					<h2>Loses:</h2>
+				
+					<span id="loses">???</span>
+					
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+	<footer class="footer">
+
+		<p>&copy; 2017 Ali Darvishi</p>
+
+		<p>Image Credit: HBO</p>
+		
+	</footer>
+
+
+
+</body>
+</html>
