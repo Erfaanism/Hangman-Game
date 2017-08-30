@@ -1,27 +1,96 @@
-var arrFName = ["ARYA", "BRAN", "CERSEI", "DAENERYS", "JAMIE", "JON", "JORAH", "SANSA", "THEON", "TYRION"];
-var arrLName = ["STARK", "STARK", "LANNISTER", "TARGARYEN", "LANNISTER", "SNOW", "MORMONT", "STARK", "GREYJOY", "LANNISTER"];
-var arrImage = ["arya.jpg", "bran.jpg", "cersei.jpg", "daenerys.jpg", "jamie.jpg", "jon.jpg", "jorah.jpg", "sansa.jpg", "theon.jpg", "tyrion.jpg"];
-var cpuName = "";
-var cpuImage = "";
-var remaining = 0;
-var usedLetters = [];
-var counterW = 0;
-var counterL = 0;
-var play = false;
+var arrFName = ["ARYA", "BRAN", "CATELYN", "CERSEI", "DAENERYS", "JAIME", "JOFFREY", "JON", "SANSA", "TYRION"];
+var arrLName = ["STARK", "STARK", "STARK", "LANNISTER", "TARGARYEN", "LANNISTER", "BARATHEON", "SNOW", "STARK", "LANNISTER"];
+var arrImage = ["arya.jpg", "bran.jpg", "catelyn.jpg", "cersei.jpg", "daenerys.jpg", "jaime.jpg", "joffrey.jpg", "jon.jpg", "sansa.jpg", "tyrion.jpg"];
+var arrGuessedLetters = [];
+var strCpuName = "";
+var arrCpuName = [];
+var strpuImage = "";
+var	intWrong = 0;
+var intWrongCounter = 0;
+var intIndex = 0;
+var intRemaining = 0;
+var arrUsedLetters = [];
+var intCounterW = 0;
+var intCounterL = 0;
+var bolStart = false;
+var bolPlay = false;
 
 function charSelector() {
-	// if (play == false) {
 		var rndm = Math.floor(Math.random() * arrFName.length);
-		cpuName = (arrFName[rndm] + " " + arrLName[rndm]);
-		cpuImage = arrImage[rndm];
-		console.log(cpuName);
-		console.log(cpuImage);
-	// 	play = true;
-	// }
+		strCpuName = (arrFName[rndm] + " " + arrLName[rndm]);
+		strpuImage = arrImage[rndm];
+		arrCpuName = strCpuName.split("");
+		console.log(strCpuName);
+		console.log(strpuImage);
+		console.log(arrCpuName);
 }
 
+function currentWord() {
+	$("#currentWord").html("");
+	$.each(arrCpuName, function(i, letter){
+		if (letter !== " ") {
+			$("#currentWord").append("<span id='char" + i + "'>_ </span>");
+			console.log(letter);
+		}
+		else {
+			$("#currentWord").append("<span>&nbsp;&nbsp;</span>");
+			console.log(letter);
+		}
+	});
+}
+
+function play() {
+	if (bolPlay == false) {
+		charSelector();
+		currentWord();
+		intRemaining = 12;
+		$("#remainingGuesses").html(intRemaining);
+		$("guessedLetters").html("");
+		$("#wins").html(intCounterW);
+		$("#loses").html(intCounterL);
+		$("#instructions").css("color", "transparent");
+		$("#guessedLetters").html("&nbsp;");
+		bolPlay = true;
+	};
+};
+
+
+function checker(letter) {
+	intWrongCounter = 0;
+	$.each(arrCpuName, function(i, val) {
+
+		if (letter !== " " && letter.toUpperCase() == val) {
+			$("#char" + i).html(letter.toUpperCase() + "&nbsp;");
+		}
+
+		else if (letter.toUpperCase() !== " " && letter.toUpperCase() !== $("#char" + i).text()) {
+			intWrongCounter++;	
+		}
+	})
+
+	if (intWrongCounter == arrCpuName.length) {
+		intRemaining--;
+		$("#remainingGuesses").html(intRemaining);
+		arrGuessedLetters[intIndex] = letter.toUpperCase();
+		$("#guessedLetters").append(letter.toUpperCase());
+		intIndex++;
+	}
+	
+	// $.each(arrGuessedLetters,function(j, guessed) {
+	// 	if (letter.toUpperCase() == arrGuessedLetters[j]) {
+	// 		intRemaining++;
+	// 	}
+	// })
+}
+
+function guessedLetters() {
+	
+	$("guessedLetters").append(event.key);
+}
+
+
 document.onkeyup = function exec(event){
-	console.log(event.key);
-	charSelector();
+	play();
+	checker(event.key);
 }
 

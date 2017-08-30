@@ -14,36 +14,28 @@ body {
 	color: #ddd;
 	font-size: 18px;
 	line-height: 150%;
-	margin: 2%;
+	margin-bottom: 60px;
 }
 
 header {
 	background: rgba(240, 240, 240, 0.1);
-	margin: 3% 10% 3% 10%;
 	text-align: center; 
-	font-family: 'Rye', cursive;
-	font-size: 1.5em;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-between;
-	text-transform: uppercase;
+	margin: 3% 10% 3% 10%;
 	padding: 3%;
 }
 
-.hangImg {
-
-}
-
-#hangImg {
-	margin-top: 5%;
-	width: 30%;
+header h1 {
+	font-family: 'Rye', cursive;
+	font-size: 1.5em;
+	text-transform: uppercase;
 }
 
 .layout {
 	background: rgba(240, 240, 240, 0.1);
-	margin: 0 10% 0 10%;
+	margin: 10%;
 	width: 80%;
+	padding-top: 3%;
+	padding-bottom: 3%;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -99,17 +91,13 @@ header {
 	justify-content: space-around;
 }
 
-footer {
-	width: 100%;
-	height: 80px;
-	font-size: 16px;
-	text-transform: capitalize;
+.footer {
 	text-align: center;
- 	background-color: rgba(0, 0, 0, 0.8);
- 	padding-top: 20px;
- 	border-top: 3px solid #999;
- 	position: absolute;
- 	bottom: 0;
-	left: 0;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+	background-color: rgba(240, 240, 240, 0.1);
 }
 
