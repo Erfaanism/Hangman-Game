@@ -4,7 +4,7 @@ var arrImage = ["arya.jpg", "bran.jpg", "catelyn.jpg", "cersei.jpg", "daenerys.j
 var arrGuessedLetters = [];
 var strCpuName = "";
 var arrCpuName = [];
-var strpuImage = "";
+var strCpuImage = "";
 var	intWrong = 0;
 var intWrongCounter = 0;
 var intIndex = 0;
@@ -18,10 +18,10 @@ var bolPlay = false;
 function charSelector() {
 		var rndm = Math.floor(Math.random() * arrFName.length);
 		strCpuName = (arrFName[rndm] + " " + arrLName[rndm]);
-		strpuImage = arrImage[rndm];
+		strCpuImage = arrImage[rndm];
 		arrCpuName = strCpuName.split("");
 		console.log(strCpuName);
-		console.log(strpuImage);
+		console.log(strCpuImage);
 		console.log(arrCpuName);
 }
 
