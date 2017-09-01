@@ -55,6 +55,8 @@ function play() {
 		$("#guessedLetters").html("&nbsp;");
 		$("#charImg").attr("src", "assets/images/throne.jpg");
 		$("#hangman").attr("src", "assets/images/hang.png");
+		$("#hangman").width("30%");
+		$("#charImg").width("30%");
 		bolPlay = true;
 	}
 }
@@ -121,6 +123,9 @@ function checker(letter) {
 			$("#hangman").attr("src", "assets/images/hang6.png");
 			break;
 		}
+
+		$("#hangman").width("+=5px");
+		$("#charImg").width("-=5px");
 
 		if (intRemaining == 5) {
 			$("#hangman").attr("src", "assets/images/hang1.png");
