@@ -37,7 +37,7 @@ header h1 {
 
 .layout {
 	background: rgba(240, 240, 240, 0.1);
-	margin: 5% 10% 10% 10%;
+	margin: 1% 10% 10% 10%;
 	width: 80%;
 	padding-top: 3%;
 	padding-bottom: 3%;
@@ -54,13 +54,15 @@ header h1 {
 	left: 0;
 }
 
-.charImg {
-
-}
 
 #charImg {
 	margin: 3% 35% 0 35%;
 	width: 30%;
+}
+
+#hangman {
+	margin: 3% 45% 0 45%;
+	width: 10%;
 }
 
 .rightContainer {
