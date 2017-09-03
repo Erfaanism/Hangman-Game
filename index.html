@@ -14,6 +14,7 @@
 	<header>
 
 		<h1>Game of Thrones - Hangman Game</h1>
+
 		<div class="instructions" id="instructions">
 
 			<p>Press Enter to get started!</p>
@@ -29,13 +30,31 @@
 
 		<div class="leftContainer">
 
-			<div class="charImg">
+			<div class="imageSection">
 				
-				<h2>Image of the Character</h2>
+				<div class="charImg">
 
-				<img src="assets/images/throne.jpg" alt="Character Image" id="charImg">
+					<h2>Character</h2>
+					
+					<img src="assets/images/got.jpg" alt="Character Image" id="charImg">					
+				</div>
+
+				<div class="hangmanImg">
+
+					<h2>Hangman</h2>
+
+					<img src="assets/images/hang/hang.png" alt="Hangman Image" id="hangmanImg">
 				
-				<img src="assets/images/hang.png" alt="Hangman Image" id="hangman">
+				</div>
+				
+				<div class="hintImg">
+
+					<h2>Hint</h2>
+
+					<img src="assets/images/hints/hint.png" alt="Hint" id="hintImg">
+
+				</div>
+
 			</div>
 
 		</div>
@@ -50,20 +69,20 @@
 				<span id="currentWord">???</span>
 				
 			</div>
-			
-			<div class="remainingGuesses">
-
-				<h2>Remaining Guesses:</h2>
-				
-				<span id="remainingGuesses">???</span>
-
-			</div>
 
 			<div class="guessedLetters">
 
 				<h2>Guessed Letters:</h2>
 				
 				<span id="guessedLetters">???</span>
+
+			</div>
+			
+			<div class="remainingGuesses">
+
+				<h2>Remaining Guesses:</h2>
+				
+				<span id="remainingGuesses">???</span>
 
 			</div>
 

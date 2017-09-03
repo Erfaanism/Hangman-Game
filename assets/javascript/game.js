@@ -1,30 +1,39 @@
 var arrFName = ["ARYA", "BRAN", "CATELYN", "CERSEI", "DAENERYS", "JAIME", "JOFFREY", "JON", "SANSA", "TYRION"];
 var arrLName = ["STARK", "STARK", "STARK", "LANNISTER", "TARGARYEN", "LANNISTER", "BARATHEON", "SNOW", "STARK", "LANNISTER"];
 var arrImage = ["arya.jpg", "bran.jpg", "catelyn.jpg", "cersei.jpg", "daenerys.jpg", "jaime.jpg", "joffrey.jpg", "jon.jpg", "sansa.jpg", "tyrion.jpg"];
-var arrGuessedLetters = [];
-var arrUsedLetters = [];
+var arrHint = ["stark.jpg", "stark.jpg", "stark.jpg", "lannister.jpg", "targaryen.jpg", "lannister.jpg", "baratheon.jpg", "stark.jpg", "stark.jpg", "lannister.jpg"]
 var strCpuName = "";
 var arrCpuName = [];
-var arrCompleteWord = [];
 var arrRevealedLetters =[];
 var strCpuImage = "";
-var intCorrectCounter = 0;
-var	intWrong = 0;
+var strHintImage = "";
 var intWrongCounter = 0;
-var intIndex = 0;
-var intSpaceIndex = 0;
 var intRemaining = 0;
 var arrUsedLetters = [];
 var intCounterW = 0;
 var intCounterL = 0;
-var bolSpaceRemoved = false;
 var bolPlay = false;
+var arrCopyFName = arrFName.slice(0);
+var arrCopyLName = arrLName.slice(0);
+var arrCopyImage = arrImage.slice(0);
+var arrCopyHint = arrHint.slice(0);
 
 function charSelector() {
-		var rndm = Math.floor(Math.random() * arrFName.length);
-		strCpuName = (arrFName[rndm] + " " + arrLName[rndm]);
-		strCpuImage = arrImage[rndm];
-		arrCpuName = strCpuName.split("");
+	if (arrCopyFName.length < 1) {
+		arrCopyFName = arrFName.slice(0);
+		arrCopyLName = arrLName.slice(0);
+		arrCopyImage = arrImage.slice(0);
+		arrCopyHint = arrHint.slice(0);
+	}
+	var rndm = Math.floor(Math.random() * arrCopyFName.length);
+	strCpuName = (arrCopyFName[rndm] + " " + arrCopyLName[rndm]);
+	strCpuImage = arrCopyImage[rndm];
+	strHintImage = arrCopyHint[rndm];
+	arrCpuName = strCpuName.split("");
+	arrCopyFName.splice(rndm, 1);
+	arrCopyLName.splice(rndm, 1);
+	arrCopyImage.splice(rndm, 1);
+	arrCopyHint.splice(rndm, 1);
 };
 
 function currentWord() {
@@ -32,7 +41,6 @@ function currentWord() {
 	$.each(arrCpuName, function(i, letter){
 		if (letter !== " ") {
 			$("#currentWord").append("<span id='char" + i + "'>_ </span>");
-			// arrCompleteWord.push(letter);
 		}
 		else {
 			$("#currentWord").append("<span>&nbsp;&nbsp;</span>");
@@ -53,10 +61,9 @@ function play() {
 		$("#loses").html(intCounterL);
 		$("#instructions").css("color", "transparent");
 		$("#guessedLetters").html("&nbsp;");
-		$("#charImg").attr("src", "assets/images/throne.jpg");
-		$("#hangman").attr("src", "assets/images/hang.png");
-		$("#hangman").width("30%");
-		$("#charImg").width("30%");
+		$("#charImg").attr("src", "assets/images/got.jpg");
+		$("#hangmanImg").attr("src", "assets/images/hang/hang.png");
+		$("#hintImg").attr("src", "assets/images/hints/hint.png");
 		bolPlay = true;
 	}
 }
@@ -66,7 +73,8 @@ function wining(){
 	bolPlay = false;
 	intCounterW++;
 	$("#wins").html(intCounterW);
-	$("#charImg").attr("src", "assets/images/" + strCpuImage);
+	$("#charImg").attr("src", "assets/images/characters/" + strCpuImage);
+	$("#hintImg").attr("src", "assets/images/hints/" + strHintImage);
 }
 
 function losing() {
@@ -74,6 +82,7 @@ function losing() {
 	bolPlay = false;
 	intCounterL++;
 	$("#loses").html(intCounterL);
+	$("#charImg").attr("src", "assets/images/characters/" + strCpuImage);
 }
 
 function checker(letter) {
@@ -99,36 +108,28 @@ function checker(letter) {
 	if (intWrongCounter == arrCpuName.length) {
 		intRemaining--;
 		$("#remainingGuesses").html(intRemaining);
-		arrGuessedLetters[intIndex] = letter.toUpperCase();
 		$("#guessedLetters").append(letter.toUpperCase());
-		intIndex++;
 
 		switch (intRemaining) {
 			case 5:
-			$("#hangman").attr("src", "assets/images/hang1.png");
+			$("#hangmanImg").attr("src", "assets/images/hang/hang1.png");
 			break;
 			case 4:
-			$("#hangman").attr("src", "assets/images/hang2.png");
+			$("#hangmanImg").attr("src", "assets/images/hang/hang2.png");
 			break;
 			case 3:
-			$("#hangman").attr("src", "assets/images/hang3.png");
+			$("#hangmanImg").attr("src", "assets/images/hang/hang3.png");
 			break;
 			case 2:
-			$("#hangman").attr("src", "assets/images/hang4.png");
+			$("#hangmanImg").attr("src", "assets/images/hang/hang4.png");
+			$("#hintImg").attr("src", "assets/images/hints/" + strHintImage);
 			break;
 			case 1:
-			$("#hangman").attr("src", "assets/images/hang5.png");
+			$("#hangmanImg").attr("src", "assets/images/hang/hang5.png");
 			break;
 			case 0:
-			$("#hangman").attr("src", "assets/images/hang6.png");
+			$("#hangmanImg").attr("src", "assets/images/hang/hang6.png");
 			break;
-		}
-
-		$("#hangman").width("+=5px");
-		$("#charImg").width("-=5px");
-
-		if (intRemaining == 5) {
-			$("#hangman").attr("src", "assets/images/hang1.png");
 		}
 	}
 
@@ -142,6 +143,6 @@ document.onkeyup = function exec(event){
 		play();
 	}
 	if (bolPlay == true && event.keyCode >= 65 && event.keyCode <= 90 && !arrUsedLetters.includes(event.key.toUpperCase())) {
-	checker(event.key);
+		checker(event.key);
 	}
 }
