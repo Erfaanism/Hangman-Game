@@ -35,6 +35,25 @@ header h1 {
 	line-height: 200%;
 }
 
+button {
+	background-color: rgba(40, 40, 40, 1);
+	color: #ddd;
+	border: 2px solid #ddd;
+	border-radius: 4px;
+	width: 80px;
+	height: 40px;
+	margin: 10px;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+}
+
+button:hover {
+	background-color: #ddd;
+	color: rgba(40, 40, 40, 1);
+	border: 2px solid rgba(160, 0, 0, 1);
+	border-radius: 4px;
+}
+
 .layout {
 	background: rgba(240, 240, 240, 0.1);
 	margin: 1% 10% 10% 10%;
