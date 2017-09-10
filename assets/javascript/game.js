@@ -139,14 +139,7 @@ $(document).ready(function() {
 			losing();
 		}
 	}
-
-	// $("#playPause").on("click", function() {
-	// 	$("<audio id='music' src='assets/audio/got.mp3'>");
-	// 	$('#music')[0].play();
-	// 	$("#playPause").html("play_arrow");
-	// 	console.log("clicked");
-	// })
-
+	
 	document.onkeyup = function exec(event){
 		if (bolPlay == false && event.keyCode == 13) {
 			play();
